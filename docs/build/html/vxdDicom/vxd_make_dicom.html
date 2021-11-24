@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vxd_make_dicom.py &mdash; voxelDesk 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vxd_summarize_dcminfo.py" href="vxd_summarize_dcminfo.html" />
+    <link rel="prev" title="vxdSort.py" href="../vxdSort/vxdSort.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> voxelDesk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/dependencies.html">Installing the dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/vxd.html">Installing voxelDesk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Creating the conda virtual environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/envs.html">Setting the environment variables and file permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/config.html">Setting the configuration parameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DICOM Sorting and NIFTI Conversion</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdSort/vxdSort.html">vxdSort.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DICOM Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">vxd_make_dicom.py</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-usages">Example Usages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vxd_summarize_dcminfo.html">vxd_summarize_dcminfo.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NIFTI Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdNifti/vxd_make_nii_rgb.html">vxd_make_nii_rgb.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vxdNifti/vxd_make_nii_rgb_fusion.html">vxd_make_nii_rgb_fusion.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vxdNifti/vxd_tidy.html">vxd_tidy.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Pre-Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdDiff/vxd_diff_preproc.html">vxd_diff_preproc.py</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">voxelDesk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>vxd_make_dicom.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/vxdDicom/vxd_make_dicom.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vxd-make-dicom-py">
+<h1>vxd_make_dicom.py<a class="headerlink" href="#vxd-make-dicom-py" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Create a new DICOM series from NIFTI data. An suitable <em>template</em> DICOM file must exist (see <a class="reference internal" href="#description"><span class="std std-ref">Description</span></a>).</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>vxd_make_dicom.py -t/--template &lt;template DICOM file&gt; -n/--nifti &lt;source NIFTI file&gt; [options]
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>-t</strong>/<strong>--template</strong>: path to the template DICOM file.</p></li>
+<li><p><strong>-n</strong>/<strong>--nifti</strong>: path to the source NIFTI file. This must be either a 3D or 4D NIFTI volume. If a 4D NIFTI volume
+is passed, it is assumed the NIFTI volume contains (R,G,B) values for each voxel, and the 4th dimension contains these values.</p></li>
+</ul>
+</div>
+<div class="section" id="description">
+<span id="id1"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>vxd_make_dicom.py</strong> will create a new DICOM series from an existing NIFTI file. The new DICOM series will be based on a
+template DICOM file, which is provided via the <strong>-t</strong> / <strong>--template</strong> argument.
+The criteria for a valid template file are as follows:</p>
+<ul class="simple">
+<li><p>The template file must be one file from an existing DICOM series (enhanced DICOMs are also accepted, in which
+the entire series is stored within a single file).</p></li>
+<li><p>For non-enhanced DICOMs, the rest of the DICOM files for this series must reside in the same folder as the template file.</p></li>
+<li><p>The NIFTI file should originate from the template DICOM series (i.e. the NIFTI file represents a NIFTI-conversion
+of the template DICOM series). <em>The only thing which can change between the NIFTI and DICOM series is the values stored in
+voxels themselves.</em> All other properties, such as the matrix size, image orientation etc, must be identical.</p></li>
+</ul>
+<p>The intended use of <strong>vxd_make_dicom.py</strong> is for situations in which a raw DICOM series has first been converted into NIFTI
+format, after which post-processing has been performed to generate new images. An example would be a processed track density image map, which uses a
+scanner-generated Fractional Anisotropy image to provide the template DICOM header. <strong>vxd_make_dicom.py</strong> can be used
+to generate a new DICOM series, using the existing DICOM template, and taking new voxel values from the processed NIFTI image. This works because the
+source NIFTI data and the DICOM template are in the same “space”.</p>
+<p>To facilitate integration of the new DICOM series back into the patient’s original study on a PACS system,
+the DICOM tags in the new series are based on those from the template series, with only minor changes.
+These changes include items such as the <em>SeriesDescription</em> and <em>SeriesInstanceUID</em> DICOM tags, but tags such as <em>ImageOrientationPatient</em>,
+<em>ImagePositionPatient</em>, <em>Rows</em>, <em>Columns</em>, etc. remain un-changed.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not use NIFTI files which have different orientations, matrix/voxel sizes, etc. from the template DICOM series.
+<strong>It is only the values stored in the voxels themselves which can differ between the NIFTI and DICOM files.</strong></p>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>-c</strong> / <strong>--cmap</strong> <em>colourmap</em>:
+By default, the new DICOM series will use a greyscale colour scheme, unless a 4D NIFTI volume is provided, in which case
+it is assumed RGB values are held in the 4th dimension.
+However, colour DICOMs can also be written from a 3D source NIFTI file, by specifying a colourmap.
+Colour DICOMs created by voxelDesk are in 3-channel RGB format, with the DICOM tag <em>SamplesPerPixel</em> set to 3,
+and <em>PhotometricInterpretation</em> set to RGB. Colourmaps are taken from the <em>matplotlib</em> library, and the available colourmaps can be viewed
+<a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">here</a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-s</strong> / <strong>--series_description</strong> <em>new series description</em>:
+Option to define the series description for the new DICOM series. If not specified, the default is to use the series
+description from the template file, with the suffix ‘<em>-vxd</em>’, or ‘<em>-vxd-rgb</em>’ if a colour DICOM series is being created.</p></li>
+</ul>
+</div>
+<div class="section" id="example-usages">
+<h2>Example Usages<a class="headerlink" href="#example-usages" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Create a new DICOM series depicting track density images (stored in the file <em>cortico-spinal-tract-tdi.nii.gz</em>).
+Use the existing <em>dti-fa</em> DICOM series from the same study as the template for the new DICOM series.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vxd_make_dicom</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">template</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">dicomfolder</span><span class="o">/</span><span class="n">dti</span><span class="o">-</span><span class="n">fa</span><span class="o">-</span><span class="mf">0001.</span><span class="n">dcm</span> <span class="o">--</span><span class="n">nifti</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">niftifolder</span><span class="o">/</span><span class="n">cortico</span><span class="o">-</span><span class="n">spinal</span><span class="o">-</span><span class="n">tract</span><span class="o">-</span><span class="n">tdi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>We didn’t specify a name for the new series description, so assuming <em>dti-fa</em> was the series description of the template file,
+the new series will be named <em>dti-fa-vxd</em>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p>As above, but this time we’ll specify a series description for the new DICOM series (CST-TDI), and produce colour
+DICOM images, using the <em>jet</em> colourmap.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vxd_make_dicom</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">template</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">dicomfolder</span><span class="o">/</span><span class="n">dti</span><span class="o">-</span><span class="n">fa</span><span class="o">-</span><span class="mf">0001.</span><span class="n">dcm</span> <span class="o">--</span><span class="n">nifti</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">niftifolder</span><span class="o">/</span><span class="n">cortico</span><span class="o">-</span><span class="n">spinal</span><span class="o">-</span><span class="n">tract</span><span class="o">-</span><span class="n">tdi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">series_description</span> <span class="n">CST</span><span class="o">-</span><span class="n">TDI</span> <span class="o">--</span><span class="n">cmap</span> <span class="n">jet</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vxd_summarize_dcminfo.html" class="btn btn-neutral float-right" title="vxd_summarize_dcminfo.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../vxdSort/vxdSort.html" class="btn btn-neutral float-left" title="vxdSort.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Patrick Hales
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+FORMAT dicom
+
+%header
+
+
+REPLACE PatientID var:PatientID_replacement
+REPLACE PatientName var:PatientName_replacement
+ADD PatientIdentityRemoved Yes
+
+
+REMOVE endswith:Time
+REMOVE endswith:time
+REMOVE AdditionalPatientHistory
+REMOVE AccessionNumber
+REMOVE startswith:IssueDate
+REMOVE IssuerOfPatientID
+REMOVE FillerOrderNumberImagingServiceRequest
+REMOVE OtherPatientIDs
+REMOVE OtherPatientNames
+REMOVE OtherPatientIDsSequence
+REMOVE PatientAddress
+REMOVE PatientBirthName
+REMOVE PatientBirthDate
+REMOVE PatientsBirthDate
+REMOVE PatientMotherBirthName
+REMOVE PatientsName
+REMOVE ReasonForStudy
+REMOVE contains:Trial
+REMOVE startswith:PatientTelephoneNumber
+REMOVE endswith:IDs
+REMOVE ReferringPhysicianName
+REMOVE ConsultingPhysicianName
+REMOVE EvaluatorName
+REMOVE PerformedStationName
+REMOVE SecondaryReviewerName
+REMOVE PersonName
+REMOVE PersonAddress
+REMOVE ReferringPhysicianAddress
+REMOVE ReferringPhysicianTelephoneNumbers
+REMOVE ReferringPhysicianIdentificationSequence
+REMOVE ConsultingPhysicianIdentificationSequence
+REMOVE PhysicianApprovingInterpretation
+REMOVE PhysiciansOfRecord
+REMOVE PhysiciansOfRecordIdentificationSequence
+REMOVE PerformingPhysicianName
+REMOVE PerformingPhysicianIdentificationSequence
+REMOVE PhysiciansReadingStudyIdentificationSequence
+REMOVE RequestingPhysician
+REMOVE ScheduledPerformingPhysicianIdentificationSequence
+REMOVE RequestingPhysicianIdentificationSequence
+REMOVE HumanPerformerName
+REMOVE ContactDisplayName
+REMOVE PerformingPhysicianName
+REMOVE NameOfPhysiciansReadingStudy
+REMOVE OperatorsName
+REMOVE ScheduledPerformingPhysicianName
+REMOVE ReviewerName
+REMOVE NamesOfIntendedRecipientsOfResults
+REMOVE SourceApplicatorName
+REMOVE ClinicalTrialSponsorName
+REMOVE ContentCreatorName
+REMOVE ClinicalTrialProtocolEthicsCommitteeName
+REMOVE contains:UID
+REMOVE RegionOfResidence
+REMOVE CurrentPatientLocation
+REMOVE PatientComments
+REMOVE PatientTransportArrangements
+REMOVE PatientDeathDateInAlternativeCalendar
+REMOVE PatientInstitutionResidence
+REMOVE PerformedLocation
+REMOVE ScheduledStudyLocation
+REMOVE ScheduledStudyLocationAETitle
+REMOVE OrderEntererLocation
+REMOVE AssignedLocation
+REMOVE InstitutionAddress
+REMOVE InstitutionalDepartmentName
+REMOVE InstitutionName

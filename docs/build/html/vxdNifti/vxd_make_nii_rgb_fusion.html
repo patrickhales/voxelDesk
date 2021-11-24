@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vxd_make_nii_rgb_fusion.py &mdash; voxelDesk 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="vxd_tidy.py" href="vxd_tidy.html" />
+    <link rel="prev" title="vxd_make_nii_rgb.py" href="vxd_make_nii_rgb.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> voxelDesk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/dependencies.html">Installing the dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/vxd.html">Installing voxelDesk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Creating the conda virtual environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/envs.html">Setting the environment variables and file permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/config.html">Setting the configuration parameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DICOM Sorting and NIFTI Conversion</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdSort/vxdSort.html">vxdSort.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DICOM Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdDicom/vxd_make_dicom.html">vxd_make_dicom.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vxdDicom/vxd_summarize_dcminfo.html">vxd_summarize_dcminfo.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NIFTI Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vxd_make_nii_rgb.html">vxd_make_nii_rgb.py</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">vxd_make_nii_rgb_fusion.py</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-usages">Example Usages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vxd_tidy.html">vxd_tidy.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Pre-Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdDiff/vxd_diff_preproc.html">vxd_diff_preproc.py</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">voxelDesk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>vxd_make_nii_rgb_fusion.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/vxdNifti/vxd_make_nii_rgb_fusion.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vxd-make-nii-rgb-fusion-py">
+<h1>vxd_make_nii_rgb_fusion.py<a class="headerlink" href="#vxd-make-nii-rgb-fusion-py" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Performs a similar function to <a class="reference internal" href="vxd_make_nii_rgb.html#vxd-make-nii-rgb"><span class="std std-ref">vxd_make_nii_rgb.py</span></a>, but creates a fusion image of two NIFTI datasets, comprising
+a foreground image overlaid on a background image. Different colourmaps can be used for each.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vxd_make_nii_rgb_fusion</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">b</span><span class="o">/--</span><span class="n">bg</span> <span class="o">&lt;</span><span class="n">background</span> <span class="n">NIFTI</span> <span class="n">file</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">f</span><span class="o">/--</span><span class="n">fg</span> <span class="o">&lt;</span><span class="n">foreground</span> <span class="n">NIFTI</span> <span class="n">file</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>-b</strong> / <strong>--bg</strong>: the background NIFTI file.</p></li>
+<li><p><strong>-f</strong> / <strong>--fg</strong>: the foreground NIFTI file.</p></li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>vxd_make_nii_rgb_fusion.py</strong> provides a means of creating a colour NIFTI dataset, which, similar to <a class="reference internal" href="vxd_make_nii_rgb.html#vxd-make-nii-rgb"><span class="std std-ref">vxd_make_nii_rgb.py</span></a>,
+appends an additional dimension to the dataset, to provide a (red,green,blue) triplet for each voxel.</p>
+<p><strong>vxd_make_nii_rgb_fusion.py</strong> extends the functionality of <a class="reference internal" href="vxd_make_nii_rgb.html#vxd-make-nii-rgb"><span class="std std-ref">vxd_make_nii_rgb.py</span></a>, by allowing a foreground image
+to be overlaid onto a background image. The transparency of the overlay, and the colourmaps used for the foreground and
+background images, can be chosen by the user.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The image dimensions of the foreground and background images must be identical.</p>
+</div>
+<p>A new colour NIFTI file is written, using the same filename as the background source file, with an ‘_fusion’ suffix.
+The fusion of these two images is ‘burnt in’ to the resulting NIFTI file.</p>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>-fg</strong> / <strong>--fg_cmap</strong> <em>colourmap</em>:
+Option to specify which colourmap is used to determine the (R,G,B) values of the foreground image (default is <em>jet</em>).
+Colourmaps are taken from the <em>matplotlib</em> library, and the available colourmaps can be viewed
+<a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">here</a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-bg</strong> / <strong>--bg_cmap</strong> <em>colourmap</em>:
+Option to specify which colourmap is used to determine the (R,G,B) values of the background image (default is <em>gray</em>).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-a</strong> / <strong>--alpha</strong> <em>alpha value (0-1)</em>:
+Option to specify the alpha (transparency) value to be used for the foreground image. Values can range  0 (fully transparent),
+to 1.0 (fully opaque). The default is 0.25.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-m</strong> / <strong>--mask</strong> <em>alpha mask NIFTI file</em>:
+Option to specify a third NIFTI file, which contains a map of alpha values to be applied to the foreground image.
+This allows transparency to vary across the foreground image, according to user-defined map of alpha values. This could
+be a binary mask, or continuous values between 0-1. If the <strong>-a</strong> / <strong>--alpha</strong> option has also been used, the ‘global’
+alpha value will be multiplied by the values in the alpha map.</p>
+<p>The dimensions of the alpha map NIFTI dataset must match the dimensions of the foreground and background images.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-s</strong> / <strong>--smod</strong>:
+Flag to use <em>self-modulation</em> of the alpha values for the foreground image, using signal intensity values from the
+foreground image itself. This will scale the transparency of the foreground image according to the relative strength of
+signal in the foreground image. High signal areas will appear more opaque, and low signal areas will appear more transparent.
+Useful for when only hyper-intense regions in the foreground image are of interest.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-uthr</strong> <em>percentile value (0-100)</em>:
+Option to specify the upper percentile value which will be used for clipping (default is 99.5).
+Prior to applying the colourmap, the source NIFTI data will be tidied to remove any outlying high or low values, as
+these can stretch the dynamic range in an un-wanted way. Any high signal intensity values above the <strong>uthr</strong> percentile
+value will be clipped to this value. Setting <strong>uthr</strong> to 100 stops any clipping being applied to high signal intensity values.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-lthr</strong> <em>percentile value (0-100)</em>:
+Option to specify the lower percentile value which will be used for clipping (default is 0).
+Prior to applying the colourmap, the source NIFTI data will be tidied to remove any outlying high or low values, as
+these can stretch the dynamic range in an un-wanted way. Any low signal intensity values below the <strong>lthr</strong> percentile
+value will be clipped to this value. Setting <strong>lthr</strong> to 0 stops any clipping being applied to low signal intensity values.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>uthr</strong> and <strong>lthr</strong> clipping values are applied to both the foreground and background images simultaneously.
+If different clipping thresholds are required for each, apply <a class="reference internal" href="vxd_tidy.html#vxd-tidy"><span class="std std-ref">vxd_tidy.py</span></a> to these files individually, before using
+<strong>vxd_make_nii_rgb_fusion.py</strong>.</p>
+</div>
+<ul class="simple">
+<li><p><strong>-zx</strong>:
+Flag to convert negative values in the source NIFTI datasets to zero, prior to applying the colourmaps.
+This helps to remove spurious negative values which might stretch the dynamic range in an un-wanted way.</p></li>
+</ul>
+</div>
+<div class="section" id="example-usages">
+<h2>Example Usages<a class="headerlink" href="#example-usages" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Overlay a track density image (TDI.nii.gz) onto a background T1 image (t1_brain.nii.gz). We’ll keep the background
+as grayscale, and use the <em>Reds</em> colourmap for the foreground:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vxd_make_nii_rgb_fusion</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">fg</span> <span class="n">TDI</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">bg</span> <span class="n">t1_brain</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">fg_cmap</span> <span class="n">Reds</span>
+</pre></div>
+</div>
+<p>This will create a new NIFTI file called <em>t1_brain_fusion.nii.gz</em> with the fused images.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p>Overlay a colour cerebral blood flow image (CBF.nii.gz) onto a background T1 image (t1_brain.nii.gz) in a brain tumour patient.
+We’ll keep the background as grayscale, and use the <em>hot</em> colourmap for the foreground. In addition, we will use a binary mask of
+the tumour as the alpha map, in order to only show the colour CBF overlay in the tumour region. Alpha values in this region will be set to 0.5.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vxd_make_nii_rgb_fusion</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">fg</span> <span class="n">CBF</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">bg</span> <span class="n">t1_brain</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">fg_cmap</span> <span class="n">hot</span> <span class="o">--</span><span class="n">mask</span> <span class="n">tumour_mask</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">alpha</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vxd_tidy.html" class="btn btn-neutral float-right" title="vxd_tidy.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vxd_make_nii_rgb.html" class="btn btn-neutral float-left" title="vxd_make_nii_rgb.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Patrick Hales
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

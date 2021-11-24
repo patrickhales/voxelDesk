@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vxd_diff_preproc.py &mdash; voxelDesk 0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="vxd_tidy.py" href="../vxdNifti/vxd_tidy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> voxelDesk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/dependencies.html">Installing the dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/vxd.html">Installing voxelDesk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Creating the conda virtual environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/envs.html">Setting the environment variables and file permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup/config.html">Setting the configuration parameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DICOM Sorting and NIFTI Conversion</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdSort/vxdSort.html">vxdSort.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DICOM Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdDicom/vxd_make_dicom.html">vxd_make_dicom.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vxdDicom/vxd_summarize_dcminfo.html">vxd_summarize_dcminfo.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">NIFTI Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vxdNifti/vxd_make_nii_rgb.html">vxd_make_nii_rgb.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vxdNifti/vxd_make_nii_rgb_fusion.html">vxd_make_nii_rgb_fusion.py</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vxdNifti/vxd_tidy.html">vxd_tidy.py</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Pre-Processing</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">vxd_diff_preproc.py</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#synopsis">Synopsis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-usages">Example Usages</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">voxelDesk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>vxd_diff_preproc.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/vxdDiff/vxd_diff_preproc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vxd-diff-preproc-py">
+<h1>vxd_diff_preproc.py<a class="headerlink" href="#vxd-diff-preproc-py" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p>Perform pre-processing steps on raw diffusion-weighted MRI data, prior to performing tractography, using mrtrix3.
+<strong>vxd_diff_preproc.py</strong> will perform the following pre-processing steps, all of which use mrtrix3 functions:</p>
+<ul class="simple">
+<li><p>denoising (using <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwidenoise.html?highlight=dwidenoise">dwidenoise</a>)</p></li>
+<li><p>remove Gibbs ringing (using <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/mrdegibbs.html?highlight=mrdegibbs">mrdegibbs</a> )</p></li>
+<li><p>eddy and topup (using <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwifslpreproc.html?highlight=dwifslpreproc">dwifslpreproc</a>)</p></li>
+<li><p>brain masking (using <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2mask.html?highlight=dwi2mask">dwi2mask</a>)</p></li>
+<li><p>DTI calculations (using <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2tensor.html?highlight=dwi2tensor">dwi2tensor</a>)</p></li>
+<li><p>CSD pre-processing (using <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2response.html?highlight=dwi2response">dwi2response</a> and
+<a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2fod.html?highlight=dwi2fod">dwi2fod</a>)</p></li>
+<li><p>whole-brain tractography (using <a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/tckgen.html?highlight=tckgen">tckgen</a> and
+<a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/tckmap.html?highlight=tckmap">tckmap</a>)</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>mrtrix3</strong> and <strong>FSL</strong> must be installed prior to running <strong>vxd_diff_preproc.py</strong></p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>vxd_diff_preproc.py -i/--input &lt;Input raw data (DICOM folder or NIFTI file)&gt; [options]
+</pre></div>
+</div>
+<ul>
+<li><p><strong>-i</strong> / <strong>--input</strong> <em>Raw diffusion data</em>: Pass either a single source NIFTI file (containing the b0 and
+diffusion-weighted volumes), or the parent folder containing the raw DICOM files.</p>
+<p>If a NIFTI file is passed, <strong>vxd_diff_preproc.py</strong> will search for accompanying <em>.json</em>, <em>.bvecs</em>, and <em>.vals</em> files
+with the same base-name, in the same folder, in order to obtain the information needed for pre-processing. These files will have been
+written automatically if the input NIFTI file was created using <a class="reference internal" href="../vxdSort/vxdSort.html#vxdsort"><span class="std std-ref">vxdSort.py</span></a>.</p>
+<p>If a DICOM folder is passed instead, the relevant information needed for pre-processing will be read from the DICOM headers.
+This method is recommended if the raw DICOM files are available.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>vxd_diff_preproc.py</strong> is designed to automate the steps commonly used in the pre-processing of raw diffusion-MRI data.
+Some of the steps can be turned on or off using the flags described below.</p>
+<p><strong>vxd_diff_preproc.py</strong> will determine if multi-shell diffusion data has been supplied (i.e. more then one level of diffusion
+weighting, or b-value, has been applied). If multi-shell data is available, the <strong>dhollander</strong> method will be used with
+<a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2response.html?highlight=dwi2response">dwi2response</a> to calculate
+the single-fibre response function. If not, then the <strong>tournier</strong> method will be used.</p>
+<p>Similarly, if multi-shell diffusion-data has been supplied, the <strong>multi-shell, multi-tissue</strong> method will be used with
+<a class="reference external" href="https://mrtrix.readthedocs.io/en/latest/reference/commands/dwi2fod.html?highlight=dwi2fod">dwi2fod</a>, to calculate the
+CSD FODs. If single-shell data has been supplied, the <strong>single-shell single-tissue method</strong> will be use (labelled <strong>csd</strong>
+in mrtrix3).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The results from the each of the pre-processing steps should be checked prior to performing tractography.
+Please see the instructions issued in the terminal window during the running of <strong>vxd_diff_preproc.py</strong> for advice on how
+to check different stages of the output.</p>
+</div>
+</div>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>-f</strong> / <strong>--b0flip</strong> <em>NIFTI file or DICOM folder</em>:
+Option to provide a NIFTI file or DICOM folder containing a b0 acquisition with the phase-encoding direction flipped
+by 180 degrees (compared to the raw data). If this is not supplied, the <em>topup</em> step will <em>not</em> be run as part of the pre-processing.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-m</strong> / <strong>--mask</strong> <em>NIFTI file or MIF file</em>:
+Option to provide a NIFTI or MIF (mrtrix3 format) file containing a user-defined mask, within which the diffusion processing will be performed.
+This will over-ride the automated brain-masking pre-processing step, and can be useful for non-brain data, or if the automated brain masking
+is not performing well.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-p</strong> / <strong>--pedir</strong> <em>Phase-encoding direction</em>:
+Option to specify which direction the phase-encoding was applied in, in the raw data. <strong>vxd_diff_preproc.py</strong> will search
+either the JSON sidecar file (for NIFTI data), or the DICOM header (for DICOM data) to extract this information, so this
+option is only necessary if neither of these are available, and the <em>topup</em> pre-processing step is requested.</p>
+<p>The specified phase-encoding direction must be one of the following:
+[-0, +0, -1, +1, -2, +2, lr, rl, pa, ap, is, si, i-, i+, j-, j+, k-, k+].</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-xe</strong> / <strong>--noeddy</strong>:
+Flag to skip the eddy-correct pre-processing step.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p><strong>-xt</strong> / <strong>--notract</strong>:
+Flag to skip the whole-brain tractography step.</p></li>
+</ul>
+</div>
+<div class="section" id="example-usages">
+<h2>Example Usages<a class="headerlink" href="#example-usages" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Perform pre-processing on the raw diffusion-MRI DICOM data stored in <em>/path/to/dicom/folder/</em>. Additionally supply a
+b0 DICOM dataset, with the PE direction flipped by 180 degrees, to allow <em>topup</em> to run.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>vxd_diff_preproc.py -i /path/to/rawdata/dicom/folder/ -f path/to/b0flip/dicom/folder
+</pre></div>
+</div>
+<p>The raw data and b0flip data will be converted into the mrtrix3 .mif file format. The relevant information needed for
+pre-processing (diffusion b-values, diffusion gradient directions, phase-encoding direction) will be automatically read
+from the DICOM headers and stored in the .mif header.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p>Perform pre-processing on the raw diffusion-MRI data stored in dwi_raw.nii.gz. This is a NIFTI file which was previously
+converted from DICOM format using <a class="reference internal" href="../vxdSort/vxdSort.html#vxdsort"><span class="std std-ref">vxdSort.py</span></a>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>vxd_diff_preproc.py -i dwi_raw.nii.gz
+</pre></div>
+</div>
+<p>Because the NIFTI conversion was performed using <a class="reference internal" href="../vxdSort/vxdSort.html#vxdsort"><span class="std std-ref">vxdSort.py</span></a>, accompanying <em>dwi_raw.json</em>, <em>dwi_raw.bval</em>, and <em>dwi_raw.bvec</em> files
+also exist in the same folder as dwi_raw.nii.gz. <strong>vxd_diff_preproc.py</strong> will read the information stored in these files, and
+combine it with the raw data in dwi_raw.nii.gz, to create a new .mif file.</p>
+<p>Because no b0flip file was supplied, <em>topup</em> will not be run.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../vxdNifti/vxd_tidy.html" class="btn btn-neutral float-left" title="vxd_tidy.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Patrick Hales
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

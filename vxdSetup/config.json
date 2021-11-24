@@ -1,0 +1,25 @@
+{
+    "sortedDicomFolderName": "vxd_dicom",
+    "sortedNiftiFolderName": "vxd_nifti",
+    "defaultTargetPattern": "/%PatientName/%StudyDate/%SeriesNumber-%SeriesDescription/%SeriesDescription-%InstanceNumber.dcm",
+    "excludeNifti": [
+        "localizer",
+        "survey",
+        "phoenix",
+        "iso_tensor"
+    ],
+    "deidRecipe": "deid_voxelDesk.dicom",
+    "T1bl_1.5T": 1.65,
+    "T1bl_3T": 1.65,
+    "T1bl_7T": 2.29,
+    "T1bl_4.7T": 1.833,
+    "T1bl_9.4T": 2.429,
+    "T1gm_1.5T": 1.1,
+    "T1gm_3T": 1.331,
+    "T1wm_1.5T": 0.56,
+    "T1wm_3T": 0.832,
+    "T1csf_1.5T": 2.06,
+    "T1csf_3T": 3.7,
+    "T1fat_1.5T": 0.2,
+    "T1fat_3T": 0.382
+}

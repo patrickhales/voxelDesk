@@ -1,0 +1,5 @@
+* when setting up the conda virtual environment, specify conda install numpy=1.19.2 in order for openblas to work
+
+* to get bullet points to appear correctly when using the theme, docutils must be < version 0.17.
+    Use conda install docutils=0.16
+

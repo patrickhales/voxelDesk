@@ -1,0 +1,19 @@
+name: vxd
+channels:
+  - defaults
+  - conda-forge
+  - mrtrix3
+dependencies:
+  - deid
+  - pillow
+  - matplotlib
+  - sphinx
+  - numpy=1.19.2
+  - gdcm
+  - sphinx_rtd_theme
+  - docutils=0.16
+  - nipype
+  - simplejson
+  - nibabel
+  - dcm2niix
+  - mrtrix3
