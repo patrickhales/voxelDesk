@@ -117,6 +117,7 @@ Example Usages
   also exist in the same folder as *dwi_raw.nii.gz*. **vxd_diff_preproc.py** will read the information stored in these files, and
   combine it with the raw data in dwi_raw.nii.gz, to create a new .mif file.
 
-  << TESTING RTD LINK v3...>>>
+  << TESTING RTD LINK v4 - from remote...>>>
+
 
   Because no b0flip file was supplied, *topup* will not be run.
