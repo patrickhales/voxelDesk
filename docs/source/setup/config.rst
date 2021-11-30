@@ -40,14 +40,14 @@ which will tell voxelDesk to sort DICOM files into the following file structure:
     --------- t2_tse_tra_2mm-002.dcm etc...
 
 
--  ``config['excludeNifti']`` = list of series descriptions to skip in the conversion between DICOM and NIFTI. Some DICOM series,
-    such as 3-plane localizers and diffusion tensor DICOM files, do not convert reliably to NIFTI format
-    (default ``['localizer', 'survey', 'phoenix', 'iso_tensor']``)
+- ``config['excludeNifti']`` = list of series descriptions to skip in the conversion between DICOM and NIFTI. Some DICOM series,
+  such as 3-plane localizers and diffusion tensor DICOM files, do not convert reliably to NIFTI format
+  (default ``['localizer', 'survey', 'phoenix', 'iso_tensor']``)
 
 
--   ``config['deidRecipe']`` = The name of the deid receipe file used to anonymize DICOMs (default: ``deid_voxelDesk.dicom``).
-    This file must reside in the ``$VXD_HOME/vxdSort`` folder. If you would like to customize the anonymization procedure,
-    information on how to use *deid* recipe files can be found `here <https://pydicom.github.io/deid/examples/recipe/>`_.
+- ``config['deidRecipe']`` = The name of the deid receipe file used to anonymize DICOMs (default: ``deid_voxelDesk.dicom``).
+  This file must reside in the ``$VXD_HOME/vxdSort`` folder. If you would like to customize the anonymization procedure,
+  information on how to use *deid* recipe files can be found `here <https://pydicom.github.io/deid/examples/recipe/>`_.
 
 
 
