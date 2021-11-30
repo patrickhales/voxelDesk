@@ -63,7 +63,7 @@ This should display the guidance for running ``vxdSort`` in the terminal window.
 
 .. note::
 
-    If the above dose not work, make sure the *vxd* conda environment is active (you should see (vxd) at the
+    If the above does not work, make sure the *vxd* conda environment is active (you should see (vxd) at the
     command prompt). If it isn't, type:
 
     .. code-block:: text
