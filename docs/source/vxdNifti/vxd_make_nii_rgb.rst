@@ -24,7 +24,9 @@ appending an additional dimension to the dataset, which provides a (red,green,bl
 RGB values are scaled between 0-1, and values are determined based on a given colourmap, specified
 using the **-c**/**\--cmap** option (see below - 'jet' is the default).
 
-A new NIFTI file is written, using the same filename as the source file, with an '_rgb' suffix.
+A new NIFTI file is written, using the same filename as the source file, with an '_rgb' suffix. This new NIFTI file could be used to as the
+source data to create a new colour DICOM series if desired (with the colour information already 'burnt in'), using
+:ref:`vxd_make_dicom`.
 
 Options
 ---------
