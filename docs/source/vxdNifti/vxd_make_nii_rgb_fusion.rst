@@ -30,7 +30,9 @@ background images, can be chosen by the user.
     The image dimensions of the foreground and background images must be identical.
 
 A new colour NIFTI file is written, using the same filename as the background source file, with an '_fusion' suffix.
-The fusion of these two images is 'burnt in' to the resulting NIFTI file.
+The fusion of these two images is 'burnt in' to the resulting NIFTI file. This new NIFTI file could be used to as the
+source data to create a new colour DICOM series if desired (with the colour information already 'burnt in'), using
+:ref:`vxd_make_dicom`.
 
 Options
 ---------
