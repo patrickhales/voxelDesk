@@ -3,13 +3,14 @@
 from vxdSort import dicomsort
 import os
 import sys
+import shutil
 from nipype.interfaces.dcm2nii import Dcm2niix
 import argparse
 import pydicom
 import subprocess
 from vxdSort.dicomTree import dTree
 from vxdSort.anonymize_dicom_root import anonymize
-from vxdTools.safeName import safeName
+from vxdTools.safeName import safeName, spaceToUnderscore
 from vxdTools.folderFullPath import folderFullPath
 from vxdTools.readConfigFile import readConfigFile
 
@@ -40,6 +41,16 @@ if __name__ == '__main__':
 
     # check if user has passed full path or relative path to the source dicom folder
     dicomFolder = folderFullPath(dicomFolder)
+
+    # check if the source dicom path contains whitespaces
+    dicomFolder_safe = spaceToUnderscore(dicomFolder)
+
+    # if whitespaces detected, copy contents of source dicom folder into new location
+    if dicomFolder != dicomFolder_safe:
+        print('Whitespace(s) detected in source DICOM path. Moving source DICOMs from %s to %s ...' % (dicomFolder, dicomFolder_safe))
+        shutil.copytree(dicomFolder, dicomFolder_safe)
+        shutil.rmtree(dicomFolder)
+        dicomFolder = dicomFolder_safe
 
     print('')
     print('-Source DICOM Folder = %s' % dicomFolder)
@@ -169,13 +180,16 @@ if __name__ == '__main__':
 
             if not os.path.exists(niiFolder):
                 os.makedirs(niiFolder)
+
             # write the nifti file for this folder
             # check for localizers etc first as these don't convert well to nifti
             if not any(x.lower() in folder.lower() for x in config['excludeNifti']):
+
                 converter = Dcm2niix()
-                converter.inputs.source_dir = folder
                 converter.inputs.compression = 5
+                converter.inputs.source_dir = folder
                 converter.inputs.output_dir = niiFolder
+
                 print('NIFTI output folder: %s' % converter.inputs.output_dir)
                 converter.inputs.out_filename = '%p'
                 # run the conversion
